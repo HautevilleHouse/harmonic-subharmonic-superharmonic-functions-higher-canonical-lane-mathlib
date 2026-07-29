@@ -1,0 +1,20 @@
+import canonicalLaneMathlib.AdmissibleClass
+import HautevilleHouse.HarmonicSubharmonicSuperharmonicFunctionsHigherCanonicalLaneLean.BridgeLemmas
+import HautevilleHouse.HarmonicSubharmonicSuperharmonicFunctionsHigherCanonicalLaneLean.GateLemmas
+import HautevilleHouse.HarmonicSubharmonicSuperharmonicFunctionsHigherCanonicalLaneLean.HarmonicBridgeLayer
+import HautevilleHouse.HarmonicSubharmonicSuperharmonicFunctionsHigherCanonicalLaneLean.SubharmonicSuperharmonicPairLayer
+import HautevilleHouse.HarmonicSubharmonicSuperharmonicFunctionsHigherCanonicalLaneLean.HigherHarmonicFunctionsLayer
+
+namespace HautevilleHouse
+namespace HarmonicSubharmonicSuperharmonicFunctionsHigherCanonicalLaneLean
+
+def HarmonicSubharmonicSuperharmonicClosure (A : AdmissibleClass) : Prop :=
+  bridgeClosed A ∧ gateClosed A ∧ HigherHarmonicFunctionsLayerClosed higherHarmonicFunctionsCertificate
+
+theorem harmonic_subharmonic_superharmonic_endgame (A : AdmissibleClass) :
+    HarmonicSubharmonicSuperharmonicClosure A := by
+  exact And.intro (bridge_from_admissible_class A)
+    (And.intro (gate_from_admissible_class A) higher_harmonic_functions_layer_closed_checked)
+
+end HarmonicSubharmonicSuperharmonicFunctionsHigherCanonicalLaneLean
+end HautevilleHouse
